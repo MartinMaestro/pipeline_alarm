@@ -54,10 +54,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   // Switch on the LED and Relay if an 1 was received
   if ((char)payload[0] == '1') {
-    digitalWrite(13, LOW);   // Turn the LED on 
     digitalWrite(12, HIGH);   // Turn the Relay on
   } else {
-    digitalWrite(13, HIGH);  // Turn the LED off by making the voltage HIGH
     digitalWrite(12, LOW);  // Turn the Relay off
   }
 
@@ -85,6 +83,8 @@ void reconnect() {
 
 void setup() {
   pinMode(13, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  digitalWrite(13, LOW);   // Turn the LED on
+  
   pinMode(12, OUTPUT);     // Initialize the Relay pin as an output
   Serial.begin(115200);
   setup_wifi();
